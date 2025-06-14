@@ -163,12 +163,16 @@ body.dark .sidebar {
 
 .sidebar-logo img {
     height: 32px;
-    border-radius: 50%;
+    width: 100%;
 }
 
 .sidebar-logo h2 {
     font-size: 1.25rem;
     font-weight: 700;
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .close-sidebar {
