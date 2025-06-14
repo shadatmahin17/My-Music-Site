@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhythora - Premium Music Experience</title>
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-animation">
+            <div class="music-note">♪</div>
+            <div class="music-note">♫</div>
+            <div class="music-note">♩</div>
+        </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <img src="Logo.png" alt="Rhythora Logo" />
+                <h2>Rhythora</h2>
+            </div>
+            <button class="close-sidebar" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <div class="menu-section">
+                <h3 class="menu-title">Discover</h3>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link active" data-page="home">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-page="albums">
+                        <i class="fas fa-compact-disc"></i>
+                        <span>Albums</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-page="artists">
+                        <i class="fas fa-user"></i>
+                        <span>Artists</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-page="events">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Events</span>
+                    </a>
+                </li>
+            </div>
+            
+            <div class="menu-section">
+                <h3 class="menu-title">Your Library</h3>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-page="favorites">
+                        <i class="fas fa-heart"></i>
+                        <span>Favorites</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-page="history">
+                        <i class="fas fa-history"></i>
+                        <span>Recently Played</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-page="playlists">
+                        <i class="fas fa-music"></i>
+                        <span>Playlists</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" data-page="profile">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+            </div>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">
+                    <span id="avatarInitial">U</span>
+                </div>
+                <div class="user-dropdown">
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="#" class="dropdown-item" data-page="profile">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                        <a href="#" class="dropdown-item" id="settingsBtn">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Log Out</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo-title">
+                    <img src="Logo.png" alt="Rhythora Logo" />
+                    <h1>Rhythora</h1>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <button class="theme-toggle" id="toggleThemeBtn">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                    <span class="theme-text">Theme</span>
+                </button>
+                
+                <div class="auth-buttons" id="authButtons">
+                    <button class="auth-button login-btn" id="loginBtn">Log In</button>
+                    <button class="auth-button signup-btn" id="signupBtn">Sign Up</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="search-container" id="searchContainer">
+            <input type="search" class="search-bar" id="searchBar" placeholder="Search songs, artists, or albums...">
+        </div>
+
+        <!-- Home Page -->
+        <main class="container" id="homePage">
+            <div class="section-header">
+                <h2 class="section-title">Trending Now</h2>
+                <a href="#" class="view-all">View All</a>
+            </div>
+            <!-- Songs will be injected here -->
+        </main>
+
+        <!-- Profile Page -->
+        <div class="profile-page" id="profilePage">
+            <div class="profile-header">
+                <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-avatar" id="profileAvatar">
+                <div class="profile-info">
+                    <h1 class="profile-name" id="profileName">User Name</h1>
+                    <p class="profile-username" id="profileUsername">@username</p>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="followersCount">1.2K</div>
+                            <div class="stat-label">Followers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="followingCount">345</div>
+                            <div class="stat-label">Following</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="playlistsCount">24</div>
+                            <div class="stat-label">Playlists</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="edit-profile-btn" id="editProfileBtn">Edit Profile</button>
+                </div>
+            </div>
+
+            <div class="profile-tabs">
+                <div class="profile-tab active" data-tab="playlists">Playlists</div>
+                <div class="profile-tab" data-tab="favorites">Favorites</div>
+                <div class="profile-tab" data-tab="history">Listening History</div>
+            </div>
+
+            <div class="profile-tab-content active" id="playlistsTab">
+                <div class="playlist-grid">
+                    <!-- Playlists will be injected here -->
+                </div>
+            </div>
+
+            <div class="profile-tab-content" id="favoritesTab">
+                <div class="container">
+                    <!-- Favorite songs will be injected here -->
+                </div>
+            </div>
+
+            <div class="profile-tab-content" id="historyTab">
+                <div class="container">
+                    <!-- Listening history will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Privacy</a>
+                <a href="#" class="footer-link">Terms</a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="audio-controller" id="audioController">
+        <div class="song-info">
+            <img src="" alt="Album Cover" class="song-cover" id="songCover">
+            <div class="song-details">
+                <div class="song-title" id="currentSong">No song selected</div>
+                <div class="song-artist" id="currentArtist"></div>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <span class="progress-time" id="currentTime">0:00</span>
+            <div class="progress-bar" id="progressBar">
+                <div class="progress-filled" id="progressFilled"></div>
+            </div>
+            <span class="progress-time" id="totalTime">0:00</span>
+        </div>
+
+        <div class="controls">
+            <button class="control-button" id="prevBtn" aria-label="Previous">
+                <i class="fas fa-step-backward"></i>
+            </button>
+            <button class="control-button play-button" id="playBtn" aria-label="Play/Pause">
+                <i class="fas fa-play" id="playIcon"></i>
+            </button>
+            <button class="control-button" id="nextBtn" aria-label="Next">
+                <i class="fas fa-step-forward"></i>
+            </button>
+            <button class="control-button" id="repeatBtn" aria-label="Repeat">
+                <i class="fas fa-redo"></i>
+            </button>
+            
+            <div class="equalizer" id="equalizer">
+                <div class="equalizer-bar"></div>
+                <div class="equalizer-bar"></div>
+                <div class="equalizer-bar"></div>
+                <div class="equalizer-bar"></div>
+                <div class="equalizer-bar"></div>
+            </div>
+        </div>
+
+        <div class="volume-container">
+            <span class="volume-icon" id="volumeIcon">
+                <i class="fas fa-volume-up"></i>
+            </span>
+            <div class="volume-bar" id="volumeBar">
+                <div class="volume-filled" id="volumeFilled"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modals -->
+    <div class="auth-modal" id="loginModal">
+        <div class="auth-form">
+            <button class="close-modal" id="closeLoginModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Welcome Back</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="submit-btn">Log In</button>
+                <div class="form-footer">
+                    Don't have an account? <a class="toggle-form" id="showSignup">Sign Up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="auth-modal" id="signupModal">
+        <div class="auth-form">
+            <button class="close-modal" id="closeSignupModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Join Rhythora</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" required placeholder="Confirm your password">
+                </div>
+                <button type="submit" class="submit-btn">Create Account</button>
+                <div class="form-footer">
+                    Already have an account? <a class="toggle-form" id="showLogin">Log In</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="edit-profile-modal" id="editProfileModal">
+        <div class="edit-profile-form">
+            <button class="close-modal" id="closeEditProfileModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Edit Profile</h2>
+            <form id="editProfileForm">
+                <div class="avatar-upload">
+                    <div class="avatar-preview" id="avatarPreview"></div>
+                    <button type="button" class="upload-btn" id="uploadAvatarBtn">
+                        <i class="fas fa-camera"></i> Change Avatar
+                    </button>
+                    <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                </div>
+                <div class="form-group">
+                    <label for="editName">Full Name</label>
+                    <input type="text" id="editName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="editUsername">Username</label>
+                    <input type="text" id="editUsername" required placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label for="editBio">Bio</label>
+                    <textarea id="editBio" rows="3" placeholder="Tell us about yourself"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        class MusicPlayer {
+            constructor() {
+                this.audio = new Audio();
+                this.currentIndex = 0;
+                this.repeat = false;
+                this.shuffle = false;
+                this.volume = 0.7;
+                this.isPlaying = false;
+                this.songs = [];
+                this.filteredSongs = [];
+                this.isLoggedIn = false;
+                this.currentUser = null;
+                this.playlists = [];
+                this.favorites = [];
+                this.history = [];
+                this.sidebarOpen = false;
+                this.touchStartX = 0;
+                this.touchEndX = 0;
+                
+                this.initElements();
+                this.bindEvents();
+                this.loadSongs();
+                this.initTheme();
+                this.initVolume();
+                this.simulateLoading();
+                this.checkAuthState();
+            }
+            
+            simulateLoading() {
+                setTimeout(() => {
+                    this.elements.loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        this.elements.loadingScreen.style.display = 'none';
+                    }, 500);
+                }, 1500);
+            }
+            
+            initElements() {
+                this.elements = {
+                    container: document.getElementById('songsContainer'),
+                    homePage: document.getElementById('homePage'),
+                    profilePage: document.getElementById('profilePage'),
+                    searchBar: document.getElementById('searchBar'),
+                    searchContainer: document.getElementById('searchContainer'),
+                    audioController: document.getElementById('audioController'),
+                    currentTime: document.getElementById('currentTime'),
+                    totalTime: document.getElementById('totalTime'),
+                    progressBar: document.getElementById('progressBar'),
+                    progressFilled: document.getElementById('progressFilled'),
+                    currentSong: document.getElementById('currentSong'),
+                    currentArtist: document.getElementById('currentArtist'),
+                    songCover: document.getElementById('songCover'),
+                    playBtn: document.getElementById('playBtn'),
+                    playIcon: document.getElementById('playIcon'),
+                    prevBtn: document.getElementById('prevBtn'),
+                    nextBtn: document.getElementById('nextBtn'),
+                    repeatBtn: document.getElementById('repeatBtn'),
+                    volumeBar: document.getElementById('volumeBar'),
+                    volumeFilled: document.getElementById('volumeFilled'),
+                    volumeIcon: document.getElementById('volumeIcon'),
+                    equalizer: document.getElementById('equalizer'),
+                    themeToggle: document.getElementById('toggleThemeBtn'),
+                    themeIcon: document.getElementById('themeIcon'),
+                    themeText: document.querySelector('.theme-text'),
+                    menuToggle: document.getElementById('menuToggle'),
+                    closeSidebar: document.getElementById('closeSidebar'),
+                    sidebar: document.getElementById('sidebar'),
+                    sidebarLinks: document.querySelectorAll('.sidebar-link'),
+                    loginBtn: document.getElementById('loginBtn'),
+                    signupBtn: document.getElementById('signupBtn'),
+                    authButtons: document.getElementById('authButtons'),
+                    loginModal: document.getElementById('loginModal'),
+                    signupModal: document.getElementById('signupModal'),
+                    closeLoginModal: document.getElementById('closeLoginModal'),
+                    closeSignupModal: document.getElementById('closeSignupModal'),
+                    showSignup: document.getElementById('showSignup'),
+                    showLogin: document.getElementById('showLogin'),
+                    loginForm: document.getElementById('loginForm'),
+                    signupForm: document.getElementById('signupForm'),
+                    userAvatar: document.getElementById('userAvatar'),
+                    avatarInitial: document.getElementById('avatarInitial'),
+                    dropdownMenu: document.getElementById('dropdownMenu'),
+                    logoutBtn: document.getElementById('logoutBtn'),
+                    settingsBtn: document.getElementById('settingsBtn'),
+                    profileName: document.getElementById('profileName'),
+                    profileUsername: document.getElementById('profileUsername'),
+                    profileAvatar: document.getElementById('profileAvatar'),
+                    followersCount: document.getElementById('followersCount'),
+                    followingCount: document.getElementById('followingCount'),
+                    playlistsCount: document.getElementById('playlistsCount'),
+                    playlistsTab: document.getElementById('playlistsTab'),
+                    favoritesTab: document.getElementById('favoritesTab'),
+                    historyTab: document.getElementById('historyTab'),
+                    profileTabs: document.querySelectorAll('.profile-tab'),
+                    editProfileBtn: document.getElementById('editProfileBtn'),
+                    editProfileModal: document.getElementById('editProfileModal'),
+                    closeEditProfileModal: document.getElementById('closeEditProfileModal'),
+                    editProfileForm: document.getElementById('editProfileForm'),
+                    avatarPreview: document.getElementById('avatarPreview'),
+                    uploadAvatarBtn: document.getElementById('uploadAvatarBtn'),
+                    avatarInput: document.getElementById('avatarInput'),
+                    editName: document.getElementById('editName'),
+                    editUsername: document.getElementById('editUsername'),
+                    editBio: document.getElementById('editBio'),
+                    loadingScreen: document.getElementById('loadingScreen'),
+                    mobileOverlay: document.getElementById('mobileOverlay')
+                };
+            }
+            
+            checkAuthState() {
+                // Check if user is logged in from localStorage
+                const userData = localStorage.getItem('rhythora-user');
+                if (userData) {
+                    this.currentUser = JSON.parse(userData);
+                    this.isLoggedIn = true;
+                    this.updateAuthUI();
+                }
+            }
+            
+            initVolume() {
+                this.audio.volume = this.volume;
+                this.updateVolumeUI();
+            }
+            
+            bindEvents() {
+                // Audio events
+                this.bindAudioEvents();
+                
+                // UI events
+                this.elements.playBtn.addEventListener('click', () => this.togglePlay());
+                this.elements.prevBtn.addEventListener('click', () => this.prevSong());
+                this.elements.nextBtn.addEventListener('click', () => this.nextSong());
+                this.elements.repeatBtn.addEventListener('click', () => this.toggleRepeat());
+                
+                // Progress bar
+                this.elements.progressBar.addEventListener('click', (e) => {
+                    const rect = this.elements.progressBar.getBoundingClientRect();
+                    const percent = (e.clientX - rect.left) / rect.width;
+                    this.audio.currentTime = percent * this.audio.duration;
+                });
+                
+                // Volume control
+                this.elements.volumeBar.addEventListener('click', (e) => {
+                    const rect = this.elements.volumeBar.getBoundingClientRect();
+                    const percent = (e.clientX - rect.left) / rect.width;
+                    this.volume = Math.max(0, Math.min(1, percent));
+                    this.audio.volume = this.volume;
+                    this.updateVolumeUI();
+                });
+                
+                // Search functionality
+                this.elements.searchBar.addEventListener('input', () => {
+                    this.filterSongs(this.elements.searchBar.value.toLowerCase());
+                });
+                
+                // Theme toggle
+                this.elements.themeToggle.addEventListener('click', () => this.toggleTheme());
+                
+                // Sidebar toggle
+                this.elements.menuToggle.addEventListener('click', () => {
+                    this.toggleSidebar(true);
+                });
+                
+                this.elements.closeSidebar.addEventListener('click', () => {
+                    this.toggleSidebar(false);
+                });
+                
+                // Mobile overlay click to close sidebar
+                this.elements.mobileOverlay.addEventListener('click', () => {
+                    this.toggleSidebar(false);
+                });
+                
+                // Sidebar links
+                this.elements.sidebarLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const page = link.dataset.page;
+                        this.showPage(page);
+                        this.elements.sidebarLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                        this.toggleSidebar(false);
+                    });
+                });
+                
+                // Dropdown links
+                document.querySelectorAll('.dropdown-item[data-page]').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const page = item.dataset.page;
+                        this.showPage(page);
+                        this.elements.dropdownMenu.classList.remove('active');
+                    });
+                });
+                
+                // Profile tabs
+                this.elements.profileTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        const tabId = tab.dataset.tab;
+                        this.showProfileTab(tabId);
+                    });
+                });
+                
+                // Auth modals
+                this.elements.loginBtn.addEventListener('click', () => {
+                    this.elements.loginModal.classList.add('active');
+                });
+                
+                this.elements.signupBtn.addEventListener('click', () => {
+                    this.elements.signupModal.classList.add('active');
+                });
+                
+                this.elements.closeLoginModal.addEventListener('click', () => {
+                    this.elements.loginModal.classList.remove('active');
+                });
+                
+                this.elements.closeSignupModal.addEventListener('click', () => {
+                    this.elements.signupModal.classList.remove('active');
+                });
+                
+                this.elements.showSignup.addEventListener('click', () => {
+                    this.elements.loginModal.classList.remove('active');
+                    this.elements.signupModal.classList.add('active');
+                });
+                
+                this.elements.showLogin.addEventListener('click', () => {
+                    this.elements.signupModal.classList.remove('active');
+                    this.elements.loginModal.classList.add('active');
+                });
+                
+                // Close modals when clicking outside
+                window.addEventListener('click', (e) => {
+                    if (e.target === this.elements.loginModal) {
+                        this.elements.loginModal.classList.remove('active');
+                    }
+                    if (e.target === this.elements.signupModal) {
+                        this.elements.signupModal.classList.remove('active');
+                    }
+                    if (e.target === this.elements.editProfileModal) {
+                        this.elements.editProfileModal.classList.remove('active');
+                    }
+                });
+                
+                // Form submissions
+                this.elements.loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleLogin();
+                });
+                
+                this.elements.signupForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleSignup();
+                });
+                
+                // User dropdown
+                this.elements.userAvatar.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.elements.dropdownMenu.classList.toggle('active');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', () => {
+                    this.elements.dropdownMenu.classList.remove('active');
+                });
+                
+                // Logout
+                this.elements.logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.handleLogout();
+                });
+                
+                // Edit profile
+                this.elements.editProfileBtn.addEventListener('click', () => {
+                    this.showEditProfileModal();
+                });
+                
+                this.elements.closeEditProfileModal.addEventListener('click', () => {
+                    this.elements.editProfileModal.classList.remove('active');
+                });
+                
+                // Avatar upload
+                this.elements.uploadAvatarBtn.addEventListener('click', () => {
+                    this.elements.avatarInput.click();
+                });
+                
+                this.elements.avatarInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            this.elements.avatarPreview.style.backgroundImage = `url(${event.target.result})`;
+                            this.elements.profileAvatar.src = event.target.result;
+                            this.elements.userAvatar.style.backgroundImage = `url(${event.target.result})`;
+                            this.elements.avatarInitial.style.display = 'none';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+                
+                this.elements.editProfileForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.saveProfileChanges();
+                });
+                
+                // Touch events for mobile sidebar swipe
+                this.elements.sidebar.addEventListener('touchstart', (e) => {
+                    this.touchStartX = e.changedTouches[0].screenX;
+                }, {passive: true});
+                
+                this.elements.sidebar.addEventListener('touchend', (e) => {
+                    this.touchEndX = e.changedTouches[0].screenX;
+                    this.handleSwipe();
+                }, {passive: true});
+                
+                // Prevent body scroll when sidebar is open
+                this.elements.sidebar.addEventListener('touchmove', (e) => {
+                    if (this.sidebarOpen) {
+                        e.preventDefault();
+                    }
+                }, {passive: false});
+            }
+            
+            handleSwipe() {
+                const difference = this.touchStartX - this.touchEndX;
+                if (difference > 50 && this.sidebarOpen) {
+                    this.toggleSidebar(false);
+                }
+            }
+            
+            toggleSidebar(open) {
+                this.sidebarOpen = open;
+                if (open) {
+                    this.elements.sidebar.classList.add('active');
+                    this.elements.mobileOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    this.elements.sidebar.classList.remove('active');
+                    this.elements.mobileOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            showPage(page) {
+                // Hide all pages
+                this.elements.homePage.style.display = 'none';
+                this.elements.profilePage.style.display = 'none';
+                this.elements.searchContainer.style.display = 'none';
+                
+                // Show selected page
+                switch(page) {
+                    case 'home':
+                        this.elements.homePage.style.display = 'grid';
+                        this.elements.searchContainer.style.display = 'block';
+                        break;
+                    case 'profile':
+                        if (!this.isLoggedIn) {
+                            this.showToast('Please log in to view your profile');
+                            this.elements.loginModal.classList.add('active');
+                            this.elements.homePage.style.display = 'grid';
+                            this.elements.searchContainer.style.display = 'block';
+                            return;
+                        }
+                        this.elements.profilePage.style.display = 'block';
+                        this.loadProfileData();
+                        break;
+                    // Add cases for other pages as needed
+                    default:
+                        this.elements.homePage.style.display = 'grid';
+                        this.elements.searchContainer.style.display = 'block';
+                }
+            }
+            
+            showProfileTab(tabId) {
+                // Hide all tabs
+                this.elements.playlistsTab.classList.remove('active');
+                this.elements.favoritesTab.classList.remove('active');
+                this.elements.historyTab.classList.remove('active');
+                
+                // Remove active class from all tab buttons
+                this.elements.profileTabs.forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Show selected tab
+                document.getElementById(`${tabId}Tab`).classList.add('active');
+                
+                // Add active class to clicked tab
+                document.querySelector(`.profile-tab[data-tab="${tabId}"]`).classList.add('active');
+                
+                // Load data for the tab if needed
+                switch(tabId) {
+                    case 'playlists':
+                        this.loadPlaylists();
+                        break;
+                    case 'favorites':
+                        this.loadFavorites();
+                        break;
+                    case 'history':
+                        this.loadHistory();
+                        break;
+                }
+            }
+            
+            showEditProfileModal() {
+                // Fill form with current user data
+                if (this.currentUser) {
+                    this.elements.editName.value = this.currentUser.name;
+                    this.elements.editUsername.value = this.currentUser.username;
+                    this.elements.editBio.value = this.currentUser.bio || '';
+                    
+                    if (this.currentUser.avatar) {
+                        this.elements.avatarPreview.style.backgroundImage = `url(${this.currentUser.avatar})`;
+                        this.elements.avatarInitial.style.display = 'none';
+                    } else {
+                        this.elements.avatarPreview.style.backgroundImage = '';
+                        this.elements.avatarInitial.style.display = 'flex';
+                    }
+                }
+                
+                this.elements.editProfileModal.classList.add('active');
+            }
+            
+            saveProfileChanges() {
+                // Update user data
+                if (this.currentUser) {
+                    this.currentUser.name = this.elements.editName.value;
+                    this.currentUser.username = this.elements.editUsername.value;
+                    this.currentUser.bio = this.elements.editBio.value;
+                    
+                    // Update avatar if changed
+                    const avatarUrl = this.elements.avatarPreview.style.backgroundImage;
+                    if (avatarUrl && avatarUrl !== 'none') {
+                        this.currentUser.avatar = avatarUrl.replace('url("', '').replace('")', '');
+                    }
+                    
+                    // Save to localStorage
+                    localStorage.setItem('rhythora-user', JSON.stringify(this.currentUser));
+                    
+                    // Update UI
+                    this.updateProfileUI();
+                    this.showToast('Profile updated successfully!');
+                    this.elements.editProfileModal.classList.remove('active');
+                }
+            }
+            
+            loadProfileData() {
+                if (!this.currentUser) return;
+                
+                // Update profile header
+                this.elements.profileName.textContent = this.currentUser.name;
+                this.elements.profileUsername.textContent = `@${this.currentUser.username}`;
+                
+                if (this.currentUser.avatar) {
+                    this.elements.profileAvatar.src = this.currentUser.avatar;
+                    this.elements.userAvatar.style.backgroundImage = `url(${this.currentUser.avatar})`;
+                    this.elements.avatarInitial.style.display = 'none';
+                } else {
+                    this.elements.profileAvatar.src = 'https://via.placeholder.com/150';
+                    this.elements.userAvatar.style.backgroundImage = '';
+                    this.elements.avatarInitial.style.display = 'flex';
+                    this.elements.avatarInitial.textContent = this.currentUser.name.charAt(0).toUpperCase();
+                }
+                
+                // Update stats
+                this.elements.followersCount.textContent = this.formatNumber(this.currentUser.followers || 0);
+                this.elements.followingCount.textContent = this.currentUser.following || 0;
+                
+                // Load default tab
+                this.showProfileTab('playlists');
+            }
+            
+            loadPlaylists() {
+                // Simulate loading playlists
+                this.playlists = [
+                    { id: 1, title: 'My Favorites', cover: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5mNm4Sptm6R9lgdPMLX7yE?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>', count: 24 },
+                    { id: 2, title: 'Workout Mix', cover: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5mNm4Sptm6R9lgdPMLX7yE?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>', count: 18 },
+                    { id: 3, title: 'Chill Vibes', cover: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5mNm4Sptm6R9lgdPMLX7yE?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>', count: 32 },
+                    { id: 4, title: 'Road Trip', cover: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5mNm4Sptm6R9lgdPMLX7yE?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>', count: 15 },
+                    { id: 5, title: 'Party Hits', cover: '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5mNm4Sptm6R9lgdPMLX7yE?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>', count: 27 },
+                    { id: 6, title: 'Study Focus', cover: 'https://via.placeholder.com/300', count: 12 }
+                ];
+                
+                this.elements.playlistsCount.textContent = this.playlists.length;
+                
+                // Render playlists
+                const playlistGrid = this.elements.playlistsTab.querySelector('.playlist-grid');
+                playlistGrid.innerHTML = '';
+                
+                this.playlists.forEach(playlist => {
+                    const playlistCard = document.createElement('div');
+                    playlistCard.className = 'playlist-card';
+                    playlistCard.innerHTML = `
+                        <img src="${playlist.cover}" alt="${playlist.title}" class="playlist-cover">
+                        <div class="playlist-info">
+                            <h3 class="playlist-title">${playlist.title}</h3>
+                            <p class="playlist-count">${playlist.count} songs</p>
+                        </div>
+                    `;
+                    playlistGrid.appendChild(playlistCard);
+                });
+            }
+            
+            loadFavorites() {
+                // Simulate loading favorites
+                this.favorites = this.songs.slice(0, 6); // First 6 songs as favorites
+                
+                // Render favorites
+                const container = this.elements.favoritesTab.querySelector('.container');
+                container.innerHTML = '';
+                
+                this.favorites.forEach((song, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <img src="${song.image}" alt="${song.title}" class="card-image">
+                        <h3 class="card-title">${song.title}</h3>
+                        <p class="card-artist">${song.artist}</p>
+                        <button class="card-button">Play</button>
+                    `;
+                    card.addEventListener('click', () => {
+                        this.playSong(index);
+                    });
+                    container.appendChild(card);
+                });
+            }
+            
+            loadHistory() {
+                // Simulate loading history
+                this.history = this.songs.slice(3, 9); // Songs 3-8 as history
+                
+                // Render history
+                const container = this.elements.historyTab.querySelector('.container');
+                container.innerHTML = '';
+                
+                this.history.forEach((song, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <img src="${song.image}" alt="${song.title}" class="card-image">
+                        <h3 class="card-title">${song.title}</h3>
+                        <p class="card-artist">${song.artist}</p>
+                        <button class="card-button">Play</button>
+                    `;
+                    card.addEventListener('click', () => {
+                        this.playSong(index + 3); // Offset by 3 to match the slice
+                    });
+                    container.appendChild(card);
+                });
+            }
+            
+            handleLogin() {
+                // In a real app, you would validate credentials with backend
+                const email = this.elements.loginEmail.value;
+                const password = this.elements.loginPassword.value;
+                
+                if (!email || !password) {
+                    this.showToast('Please enter both email and password');
+                    return;
+                }
+                
+                // Simulate successful login
+                this.currentUser = {
+                    name: 'John Doe',
+                    username: 'johndoe',
+                    email: email,
+                    avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+                    followers: 1250,
+                    following: 345,
+                    bio: 'Music lover and audiophile'
+                };
+                
+                this.isLoggedIn = true;
+                
+                // Save to localStorage
+                localStorage.setItem('rhythora-user', JSON.stringify(this.currentUser));
+                
+                this.updateAuthUI();
+                this.elements.loginModal.classList.remove('active');
+                this.showToast('Logged in successfully!');
+                
+                // Reset form
+                this.elements.loginForm.reset();
+            }
+            
+            handleSignup() {
+                // In a real app, you would validate and send to backend
+                const name = this.elements.signupName.value;
+                const email = this.elements.signupEmail.value;
+                const password = this.elements.signupPassword.value;
+                const confirmPassword = this.elements.signupConfirmPassword.value;
+                
+                if (!name || !email || !password || !confirmPassword) {
+                    this.showToast('Please fill all fields');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    this.showToast('Passwords do not match');
+                    return;
+                }
+                
+                if (password.length < 6) {
+                    this.showToast('Password must be at least 6 characters');
+                    return;
+                }
+                
+                // Simulate successful signup
+                this.currentUser = {
+                    name: name,
+                    username: email.split('@')[0],
+                    email: email,
+                    avatar: '',
+                    followers: 0,
+                    following: 0,
+                    bio: ''
+                };
+                
+                this.isLoggedIn = true;
+                
+                // Save to localStorage
+                localStorage.setItem('rhythora-user', JSON.stringify(this.currentUser));
+                
+                this.updateAuthUI();
+                this.elements.signupModal.classList.remove('active');
+                this.showToast('Account created successfully!');
+                
+                // Reset form
+                this.elements.signupForm.reset();
+            }
+            
+            handleLogout() {
+                this.currentUser = null;
+                this.isLoggedIn = false;
+                
+                // Remove from localStorage
+                localStorage.removeItem('rhythora-user');
+                
+                this.updateAuthUI();
+                this.showToast('Logged out successfully!');
+                this.showPage('home');
+            }
+            
+            updateAuthUI() {
+                if (this.isLoggedIn) {
+                    this.elements.authButtons.style.display = 'none';
+                    this.elements.userAvatar.style.display = 'flex';
+                    
+                    // Update avatar
+                    if (this.currentUser && this.currentUser.avatar) {
+                        this.elements.userAvatar.style.backgroundImage = `url(${this.currentUser.avatar})`;
+                        this.elements.avatarInitial.style.display = 'none';
+                    } else if (this.currentUser) {
+                        this.elements.userAvatar.style.backgroundImage = '';
+                        this.elements.avatarInitial.style.display = 'flex';
+                        this.elements.avatarInitial.textContent = this.currentUser.name.charAt(0).toUpperCase();
+                    }
+                } else {
+                    this.elements.authButtons.style.display = 'flex';
+                    this.elements.userAvatar.style.display = 'none';
+                }
+            }
+            
+            updateProfileUI() {
+                if (!this.currentUser) return;
+                
+                // Update profile header
+                this.elements.profileName.textContent = this.currentUser.name;
+                this.elements.profileUsername.textContent = `@${this.currentUser.username}`;
+                this.elements.followersCount.textContent = this.formatNumber(this.currentUser.followers);
+                this.elements.followingCount.textContent = this.currentUser.following;
+                
+                // Update avatar
+                if (this.currentUser.avatar) {
+                    this.elements.profileAvatar.src = this.currentUser.avatar;
+                    this.elements.userAvatar.style.backgroundImage = `url(${this.currentUser.avatar})`;
+                    this.elements.avatarInitial.style.display = 'none';
+                } else {
+                    this.elements.profileAvatar.src = 'https://via.placeholder.com/150';
+                    this.elements.userAvatar.style.backgroundImage = '';
+                    this.elements.avatarInitial.style.display = 'flex';
+                    this.elements.avatarInitial.textContent = this.currentUser.name.charAt(0).toUpperCase();
+                }
+            }
+            
+            formatNumber(num) {
+                if (num >= 1000) {
+                    return (num / 1000).toFixed(1) + 'K';
+                }
+                return num.toString();
+            }
+            
+            showToast(message) {
+                const toast = document.createElement('div');
+                toast.className = 'toast-notification';
+                toast.textContent = message;
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.classList.add('show');
+                }, 10);
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(toast);
+                    }, 300);
+                }, 3000);
+            }
+            
+            bindAudioEvents() {
+                this.audio.addEventListener('timeupdate', () => this.updateProgress());
+                this.audio.addEventListener('loadedmetadata', () => this.updateDuration());
+                this.audio.addEventListener('play', () => this.onPlay());
+                this.audio.addEventListener('pause', () => this.onPause());
+                this.audio.addEventListener('ended', () => this.onSongEnd());
+                this.audio.addEventListener('volumechange', () => this.updateVolumeUI());
+                this.audio.addEventListener('error', (e) => {
+                    console.error('Audio error:', e);
+                    this.onPause();
+                });
+            }
+            
+            initTheme() {
+                const savedTheme = localStorage.getItem('rhythora-theme') || 'light';
+                if (savedTheme === 'dark') {
+                    document.body.classList.add('dark');
+                    this.elements.themeIcon.classList.remove('fa-moon');
+                    this.elements.themeIcon.classList.add('fa-sun');
+                } else {
+                    document.body.classList.remove('dark');
+                    this.elements.themeIcon.classList.remove('fa-sun');
+                    this.elements.themeIcon.classList.add('fa-moon');
+                }
+            }
+            
+            toggleTheme() {
+                document.body.classList.toggle('dark');
+                
+                if (document.body.classList.contains('dark')) {
+                    localStorage.setItem('rhythora-theme', 'dark');
+                    this.elements.themeIcon.classList.remove('fa-moon');
+                    this.elements.themeIcon.classList.add('fa-sun');
+                } else {
+                    localStorage.setItem('rhythora-theme', 'light');
+                    this.elements.themeIcon.classList.remove('fa-sun');
+                    this.elements.themeIcon.classList.add('fa-moon');
+                }
+            }
+            
+            loadSongs() {
+                // In a real app, this would fetch from an API
+                this.songs = [
+                    {
+                        id: 1,
+                        title: "Espresso",
+                        artist: "Sabrina Carpenter",
+                        image: "songs/Espresso.jpeg",
+                        audio: "songs/Sabrina Carpenter - Espresso (Official Video).m4a",
+                        genre: "pop",
+                        duration: 203,
+                        trending: true
+                    },
+                    {
+                        id: 2,
+                        title: "Jawan-Chaleya",
+                        artist: "Shilpa Rao, Arijit Singh",
+                        image: "songs/download.jpeg",
+                        audio: "songs/JAWAN- Chaleya (Hindi) _ Shah Rukh Khan _ Nayanthara _ Atlee _ Anirudh _ Ari.m4a",
+                        genre: "pop",
+                        duration: 218,
+                        trending: true
+                    },
+                    {
+                        id: 3,
+                        title: "Favorite",
+                        artist: "Isabel LaRosa",
+                        image: "songs/Favorite.png",
+                        audio: "songs/Isabel LaRosa - favorite (Lyrics).m4a",
+                        genre: "electronic",
+                        duration: 230,
+                        trending: true
+                    },
+                    {
+                        id: 4,
+                        title: "Paththavaikkum",
+                        artist: "Deepthi Suresh",
+                        image: "songs/Paththavaikkum.jpeg",
+                        audio: "songs/Full Video- Paththavaikkum _ Devara _ NTR _ Janhvi Kapoor _ Anirudh _ Deepth.m4a",
+                        genre: "pop",
+                        duration: 183,
+                        trending: false
+                    },
+                    {
+                        id: 5,
+                        title: "Choo Lo",
+                        artist: "The Local Train",
+                        image: "songs/Choo loo.jpeg",
+                        audio: "songs/The Local Train - Aalas Ka Pedh - Choo Lo (Official Audio).m4a",
+                        genre: "pop",
+                        duration: 215,
+                        trending: true
+                    },
+                    {
+                        id: 6,
+                        title: "PUSH 2 START",
+                        artist: "Tyla",
+                        image: "songs/images.jpeg",
+                        audio: "songs/Tyla - PUSH 2 START (Official Audio).m4a",
+                        genre: "pop",
+                        duration: 197,
+                        trending: true
+                    },
+                    {
+                        id: 7,
+                        title: "HUSN",
+                        artist: "Anuv Jain",
+                        image: "songs/HUSN.jpeg",
+                        audio: "songs/Anuv Jain - HUSN (Official Video).m4a",
+                        genre: "pop",
+                        duration: 197,
+                        trending: true
+                    },
+                    {
+                        id: 8,
+                        title: "Shaky Shaky",
+                        artist: "Sanju Rathod, G-SPXRK",
+                        image: "songs/Shaky.jpeg",
+                        audio: "songs/Shaky ( Official @Video ) Sanju Rathod Ft. Isha Malviya _ G-Spark _ New @Mar_256k.mp3",
+                        genre: "pop",
+                        duration: 203,
+                        trending: true
+                    },
+                    {
+                        id: 9,
+                        title: "Animals",
+                        artist: "Maroon 5",
+                        image: "songs/Animal.jpeg",
+                        audio: "songs/Maroon 5 - Animals (Lyrics)_256k.mp3",
+                        genre: "pop",
+                        duration: 218,
+                        trending: true
+                    },
+                    {
+                        id: 10,
+                        title: "Qatal",
+                        artist: "Guru Randhawa",
+                        image: "songs/Qatal.jpeg",
+                        audio: "songs/Guru Randhawa - QATAL - (Official Video)_256k.mp3",
+                        genre: "electronic",
+                        duration: 230,
+                        trending: true
+                    },
+                    {
+                        id: 11,
+                        title: "marwa Loud - Bad Boy",
+                        artist: "Marwa Loud",
+                        image: "songs/Bad Boy.jpeg",
+                        audio: "songs/Marwa Loud - Bad Boy (Lyrics)_256k.mp3",
+                        genre: "pop",
+                        duration: 183,
+                        trending: true
+                    },
+                    {
+                        id: 12,
+                        title: "Janiye",
+                        artist: "Vishal Mishra, Rashmeet Kaur",
+                        image: "songs/janiye.jpeg",
+                        audio: "songs/Janiye _ Music Video _ Chor Nikal Ke Bhaga _ Vishal Mishra, Rashmeet Kaur_ N_256k.mp3",
+                        genre: "Love",
+                        duration: 334,
+                        trending: true
+                    },
+                    {
+                        id: 13,
+                        title: "Ichchey Manush",
+                        artist: "Shawon Gaanwala",
+                        image: "songs/Ichehe manush.jpeg",
+                        audio: "songs/Ichchey Manush_256k.mp3",
+                        genre: "Love",
+                        duration: 434,
+                        trending: true
+                    },
+                    {
+                        id: 14,
+                        title: "Perfect",
+                        artist: "Ed Sheeran",
+                        image: "songs/perfect.jpeg",
+                        audio: "songs/Ed Sheeran - Perfect_256k.mp3",
+                        genre: "Love",
+                        duration: 183,
+                        trending: true
+                    }, {
+                        id: 15,
+                        title: "Sapphire",
+                        artist: "Ed Sheeran",
+                        image: "songs/Sapphir.jpeg",
+                        audio: "songs/Ed Sheeran - Sapphire (Official Music Video)_256k.mp3",
+                        genre: "Love",
+                        duration: 183,
+                        trending: true
+                    },
+                ];
+                
+                this.filteredSongs = this.songs.filter(song => song.trending);
+                this.renderSongs();
+            }
+            
+            filterSongs(query) {
+                if (!query) {
+                    this.filteredSongs = this.songs.filter(song => song.trending);
+                } else {
+                    this.filteredSongs = this.songs.filter(song => 
+                        song.title.toLowerCase().includes(query) || 
+                        song.artist.toLowerCase().includes(query)
+                    );
+                }
+                this.renderSongs();
+            }
+            
+            renderSongs() {
+                this.elements.homePage.innerHTML = '';
+                
+                if (this.filteredSongs.length === 0) {
+                    this.elements.homePage.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
+                            <h3>No songs found</h3>
+                            <p>Try a different search term</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const sectionHeader = document.createElement('div');
+                sectionHeader.className = 'section-header';
+                sectionHeader.innerHTML = `
+                    <h2 class="section-title">Trending Now</h2>
+                    <a href="#" class="view-all">View All</a>
+                `;
+                this.elements.homePage.appendChild(sectionHeader);
+                
+                this.filteredSongs.forEach((song, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.dataset.id = song.id;
+                    
+                    let badge = '';
+                    if (song.trending) {
+                        badge = '<div class="card-badge">Trending</div>';
+                    }
+                    
+                    card.innerHTML = `
+                        ${badge}
+                        <img src="${song.image}" alt="${song.title}" class="card-image">
+                        <h3 class="card-title">${song.title}</h3>
+                        <p class="card-artist">${song.artist}</p>
+                        <button class="card-button">Play</button>
+                    `;
+                    
+                    card.addEventListener('click', () => {
+                        this.playSong(index);
+                    });
+                    
+                    this.elements.homePage.appendChild(card);
+                });
+            }
+            
+            playSong(index) {
+                try {
+                    if (index < 0 || index >= this.filteredSongs.length) return;
+                    
+                    this.currentIndex = index;
+                    const song = this.filteredSongs[this.currentIndex];
+                    
+                    // Pause current audio first
+                    this.audio.pause();
+                    
+                    // Reset audio element
+                    this.audio = new Audio(song.audio);
+                    this.audio.volume = this.volume;
+                    
+                    // Add event listeners to the new audio instance
+                    this.bindAudioEvents();
+                    
+                    // Play after user interaction
+                    const playPromise = this.audio.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.error("Playback failed:", error);
+                            this.onPause();
+                        });
+                    }
+                    
+                    this.elements.currentSong.textContent = song.title;
+                    this.elements.currentArtist.textContent = song.artist;
+                    this.elements.songCover.src = song.image;
+                    this.updateActiveCard(index);
+                    
+                    // Add to history if logged in
+                    if (this.isLoggedIn) {
+                        this.addToHistory(song);
+                    }
+                } catch (error) {
+                    console.error("Error playing song:", error);
+                }
+            }
+            
+            addToHistory(song) {
+                // Check if song is already in history
+                const existingIndex = this.history.findIndex(s => s.id === song.id);
+                
+                if (existingIndex >= 0) {
+                    // Remove existing entry to avoid duplicates
+                    this.history.splice(existingIndex, 1);
+                }
+                
+                // Add to beginning of history
+                this.history.unshift(song);
+                
+                // Keep only the last 50 items
+                if (this.history.length > 50) {
+                    this.history.pop();
+                }
+            }
+            
+            updateActiveCard(index) {
+                document.querySelectorAll('.card').forEach(card => {
+                    card.classList.remove('active');
+                });
+                
+                const cards = document.querySelectorAll('.card');
+                if (cards[index]) {
+                    cards[index].classList.add('active');
+                }
+            }
+            
+            togglePlay() {
+                if (this.audio.paused) {
+                    if (!this.audio.src && this.filteredSongs.length > 0) {
+                        this.playSong(0);
+                    } else {
+                        this.audio.play().catch(error => {
+                            console.error("Playback failed:", error);
+                        });
+                    }
+                } else {
+                    this.audio.pause();
+                }
+            }
+            
+            onPlay() {
+                this.isPlaying = true;
+                this.elements.playIcon.classList.remove('fa-play');
+                this.elements.playIcon.classList.add('fa-pause');
+                this.elements.equalizer.style.display = 'flex';
+                this.elements.songCover.classList.add('now-playing');
+            }
+            
+            onPause() {
+                this.isPlaying = false;
+                this.elements.playIcon.classList.remove('fa-pause');
+                this.elements.playIcon.classList.add('fa-play');
+                this.elements.equalizer.style.display = 'none';
+                this.elements.songCover.classList.remove('now-playing');
+            }
+            
+            onSongEnd() {
+                if (this.repeat) {
+                    this.audio.currentTime = 0;
+                    this.audio.play();
+                } else {
+                    this.nextSong();
+                }
+            }
+            
+            prevSong() {
+                let newIndex = this.currentIndex - 1;
+                if (newIndex < 0) newIndex = this.filteredSongs.length - 1;
+                this.playSong(newIndex);
+            }
+            
+            nextSong() {
+                let newIndex = this.currentIndex + 1;
+                if (newIndex >= this.filteredSongs.length) newIndex = 0;
+                this.playSong(newIndex);
+            }
+            
+            toggleRepeat() {
+                this.repeat = !this.repeat;
+                this.elements.repeatBtn.style.background = this.repeat ? "var(--accent)" : '';
+                this.showToast(this.repeat ? 'Repeat: On' : 'Repeat: Off');
+            }
+            
+            updateProgress() {
+                if (this.audio.duration) {
+                    const percent = (this.audio.currentTime / this.audio.duration) * 100;
+                    this.elements.progressFilled.style.width = `${percent}%`;
+                    this.elements.currentTime.textContent = this.formatTime(this.audio.currentTime);
+                }
+            }
+            
+            updateDuration() {
+                this.elements.totalTime.textContent = this.formatTime(this.audio.duration);
+            }
+            
+            updateVolumeUI() {
+                const percent = this.audio.volume * 100;
+                this.elements.volumeFilled.style.width = `${percent}%`;
+                
+                // Update volume icon based on volume level
+                const volumeIcon = this.elements.volumeIcon.querySelector('i');
+                volumeIcon.classList.remove('fa-volume-up', 'fa-volume-down', 'fa-volume-off', 'fa-volume-mute');
+                
+                if (this.audio.volume === 0) {
+                    volumeIcon.classList.add('fa-volume-mute');
+                } else if (this.audio.volume < 0.5) {
+                    volumeIcon.classList.add('fa-volume-down');
+                } else {
+                    volumeIcon.classList.add('fa-volume-up');
+                }
+            }
+            
+            formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+        }
+        
+        // Initialize the player when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            window.musicPlayer = new MusicPlayer();
+        });
+    </script>
+    
+</body>
+</html>
